@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.CreateKlijentTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:panelGroup id="messagePanel" layout="block">
+                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+            </h:panelGroup>
+            <h:form>
+                <h:panelGrid columns="2">
+                    <h:outputLabel value="#{bundle.CreateKlijentLabel_idklijenta}" for="idklijenta" />
+                    <h:inputText id="idklijenta" value="#{klijentController.selected.idklijenta}" title="#{bundle.CreateKlijentTitle_idklijenta}" required="true" requiredMessage="#{bundle.CreateKlijentRequiredMessage_idklijenta}"/>
+                    <h:outputLabel value="#{bundle.CreateKlijentLabel_imeklijenta}" for="imeklijenta" />
+                    <h:inputTextarea rows="4" cols="30" id="imeklijenta" value="#{klijentController.selected.imeklijenta}" title="#{bundle.CreateKlijentTitle_imeklijenta}" />
+                    <h:outputLabel value="#{bundle.CreateKlijentLabel_prezimeklijenta}" for="prezimeklijenta" />
+                    <h:inputTextarea rows="4" cols="30" id="prezimeklijenta" value="#{klijentController.selected.prezimeklijenta}" title="#{bundle.CreateKlijentTitle_prezimeklijenta}" />
+                    <h:outputLabel value="#{bundle.CreateKlijentLabel_adresaklijenta}" for="adresaklijenta" />
+                    <h:inputTextarea rows="4" cols="30" id="adresaklijenta" value="#{klijentController.selected.adresaklijenta}" title="#{bundle.CreateKlijentTitle_adresaklijenta}" />
+                    <h:outputLabel value="#{bundle.CreateKlijentLabel_telefonklijenta}" for="telefonklijenta" />
+                    <h:inputTextarea rows="4" cols="30" id="telefonklijenta" value="#{klijentController.selected.telefonklijenta}" title="#{bundle.CreateKlijentTitle_telefonklijenta}" />
+                    <h:outputLabel value="#{bundle.CreateKlijentLabel_maticnibrojklijenta}" for="maticnibrojklijenta" />
+                    <h:inputText id="maticnibrojklijenta" value="#{klijentController.selected.maticnibrojklijenta}" title="#{bundle.CreateKlijentTitle_maticnibrojklijenta}" />
+                    <h:outputLabel value="#{bundle.CreateKlijentLabel_brojlicnekarteklijenta}" for="brojlicnekarteklijenta" />
+                    <h:inputText id="brojlicnekarteklijenta" value="#{klijentController.selected.brojlicnekarteklijenta}" title="#{bundle.CreateKlijentTitle_brojlicnekarteklijenta}" />
+                    <h:outputLabel value="#{bundle.CreateKlijentLabel_idtipaklijenta}" for="idtipaklijenta" />
+                    <h:selectOneMenu id="idtipaklijenta" value="#{klijentController.selected.idtipaklijenta}" title="#{bundle.CreateKlijentTitle_idtipaklijenta}" >
+                        <f:selectItems var="mc" itemLabel="Test123" itemValue="#{tipklijentaController.itemsAvailableSelectOne}" value="#{tipklijentaController.itemsAvailableSelectOne}"/>
+                    </h:selectOneMenu>
+                </h:panelGrid>
+                <br />
+                <h:commandLink class="btn btn-outline-success btn-sm" action="#{klijentController.create}" value="#{bundle.CreateKlijentSaveLink}" />
+                <br />
+                <br />
+                <h:commandLink class="btn btn-outline-info btn-sm" action="#{klijentController.prepareList}" value="#{bundle.CreateKlijentShowAllLink}" immediate="true"/>
+                <br />
+                <br />
+                <h:link class="btn btn-outline-primary btn-sm" outcome="/index" value="#{bundle.CreateKlijentIndexLink}"/>
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

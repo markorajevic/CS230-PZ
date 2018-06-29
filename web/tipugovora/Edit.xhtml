@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.EditTipugovoraTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:panelGroup id="messagePanel" layout="block">
+                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+            </h:panelGroup>
+            <h:form>
+                <h:panelGrid columns="2">
+                    <h:outputLabel value="#{bundle.EditTipugovoraLabel_idtipaugovora}" for="idtipaugovora" />
+                    <h:inputText id="idtipaugovora" value="#{tipugovoraController.selected.idtipaugovora}" title="#{bundle.EditTipugovoraTitle_idtipaugovora}" required="true" requiredMessage="#{bundle.EditTipugovoraRequiredMessage_idtipaugovora}"/>
+                    <h:outputLabel value="#{bundle.EditTipugovoraLabel_opistipaugovora}" for="opistipaugovora" />
+                    <h:inputTextarea rows="4" cols="30" id="opistipaugovora" value="#{tipugovoraController.selected.opistipaugovora}" title="#{bundle.EditTipugovoraTitle_opistipaugovora}" />
+                </h:panelGrid>
+                <h:commandLink styleClass="btn btn-outline-primary" action="#{tipugovoraController.update}" value="#{bundle.EditTipugovoraSaveLink}"/>
+                <h:link styleClass="btn btn-outline-info" outcome="View" value="#{bundle.EditTipugovoraViewLink}"/>
+                <h:link styleClass="btn btn-outline-dark" outcome="/index" value="#{bundle.EditTipugovoraIndexLink}" />
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

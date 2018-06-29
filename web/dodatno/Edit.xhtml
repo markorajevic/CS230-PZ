@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.EditDodatnoTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:panelGroup id="messagePanel" layout="block">
+                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+            </h:panelGroup>
+            <h:form>
+                <h:panelGrid columns="2">
+                    <h:outputLabel value="#{bundle.EditDodatnoLabel_iddodatno}" for="iddodatno" />
+                    <h:inputText id="iddodatno" value="#{dodatnoController.selected.iddodatno}" title="#{bundle.EditDodatnoTitle_iddodatno}" required="true" requiredMessage="#{bundle.EditDodatnoRequiredMessage_iddodatno}"/>
+                    <h:outputLabel value="#{bundle.EditDodatnoLabel_idnepokretnosti}" for="idnepokretnosti" />
+                    <h:selectOneMenu id="idnepokretnosti" value="#{dodatnoController.selected.idnepokretnosti}" title="#{bundle.EditDodatnoTitle_idnepokretnosti}" >
+                        <f:selectItems value="#{nepokretnostController.itemsAvailableSelectOne}"/>
+                    </h:selectOneMenu>
+                    <h:outputLabel value="#{bundle.EditDodatnoLabel_idtipadodatnog}" for="idtipadodatnog" />
+                    <h:selectOneMenu id="idtipadodatnog" value="#{dodatnoController.selected.idtipadodatnog}" title="#{bundle.EditDodatnoTitle_idtipadodatnog}" >
+                        <f:selectItems value="#{tipdodatnogController.itemsAvailableSelectOne}"/>
+                    </h:selectOneMenu>
+                </h:panelGrid>
+                <h:commandLink styleClass="btn btn-outline-primary" action="#{dodatnoController.update}" value="#{bundle.EditDodatnoSaveLink}"/>
+                <h:link styleClass="btn btn-outline-info" outcome="View" value="#{bundle.EditDodatnoViewLink}"/>
+                <h:link styleClass="btn btn-outline-dark" outcome="/index" value="#{bundle.EditDodatnoIndexLink}" />
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

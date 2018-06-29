@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.ListDodatnoTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:form styleClass="jsfcrud_list_form">
+                <h:panelGroup id="messagePanel" layout="block">
+                    <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+                </h:panelGroup>
+                <h:outputText escape="false" value="#{bundle.ListDodatnoEmpty}" rendered="#{dodatnoController.items.rowCount == 0}"/>
+                <h:panelGroup rendered="#{dodatnoController.items.rowCount > 0}">
+                    <h:outputText value="#{dodatnoController.pagination.pageFirstItem + 1}..#{dodatnoController.pagination.pageLastItem + 1}/#{dodatnoController.pagination.itemsCount}"/>&nbsp;
+                    <h:commandLink action="#{dodatnoController.previous}" value="#{bundle.Previous} #{dodatnoController.pagination.pageSize}" rendered="#{dodatnoController.pagination.hasPreviousPage}"/>&nbsp;
+                    <h:commandLink action="#{dodatnoController.next}" value="#{bundle.Next} #{dodatnoController.pagination.pageSize}" rendered="#{dodatnoController.pagination.hasNextPage}"/>&nbsp;
+                    <h:dataTable styleClass="table" value="#{dodatnoController.items}" var="item" border="0" cellpadding="2" cellspacing="0" rowClasses="jsfcrud_odd_row,jsfcrud_even_row" rules="all" style="border:solid 1px">
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListDodatnoTitle_iddodatno}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.iddodatno}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListDodatnoTitle_idnepokretnosti}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.idnepokretnosti}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListDodatnoTitle_idtipadodatnog}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.idtipadodatnog}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="&nbsp;"/>
+                            </f:facet>
+                            <h:commandLink action="#{dodatnoController.prepareView}" value="#{bundle.ListDodatnoViewLink}"/>
+                            <h:outputText value=" "/>
+                            <h:commandLink action="#{dodatnoController.prepareEdit}" value="#{bundle.ListDodatnoEditLink}"/>
+                            <h:outputText value=" "/>
+                            <h:commandLink action="#{dodatnoController.destroy}" value="#{bundle.ListDodatnoDestroyLink}"/>
+                        </h:column>
+                    </h:dataTable>
+                </h:panelGroup>
+                <br />
+                <h:commandLink action="#{dodatnoController.prepareCreate}" value="#{bundle.ListDodatnoCreateLink}"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{bundle.ListDodatnoIndexLink}"/>
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

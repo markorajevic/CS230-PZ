@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.EditKlijentTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:panelGroup id="messagePanel" layout="block">
+                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+            </h:panelGroup>
+            <h:form>
+                <h:panelGrid columns="2">
+                    <h:outputLabel value="#{bundle.EditKlijentLabel_idklijenta}" for="idklijenta" />
+                    <h:inputText id="idklijenta" value="#{klijentController.selected.idklijenta}" title="#{bundle.EditKlijentTitle_idklijenta}" required="true" requiredMessage="#{bundle.EditKlijentRequiredMessage_idklijenta}"/>
+                    <h:outputLabel value="#{bundle.EditKlijentLabel_imeklijenta}" for="imeklijenta" />
+                    <h:inputTextarea rows="4" cols="30" id="imeklijenta" value="#{klijentController.selected.imeklijenta}" title="#{bundle.EditKlijentTitle_imeklijenta}" />
+                    <h:outputLabel value="#{bundle.EditKlijentLabel_prezimeklijenta}" for="prezimeklijenta" />
+                    <h:inputTextarea rows="4" cols="30" id="prezimeklijenta" value="#{klijentController.selected.prezimeklijenta}" title="#{bundle.EditKlijentTitle_prezimeklijenta}" />
+                    <h:outputLabel value="#{bundle.EditKlijentLabel_adresaklijenta}" for="adresaklijenta" />
+                    <h:inputTextarea rows="4" cols="30" id="adresaklijenta" value="#{klijentController.selected.adresaklijenta}" title="#{bundle.EditKlijentTitle_adresaklijenta}" />
+                    <h:outputLabel value="#{bundle.EditKlijentLabel_telefonklijenta}" for="telefonklijenta" />
+                    <h:inputTextarea rows="4" cols="30" id="telefonklijenta" value="#{klijentController.selected.telefonklijenta}" title="#{bundle.EditKlijentTitle_telefonklijenta}" />
+                    <h:outputLabel value="#{bundle.EditKlijentLabel_maticnibrojklijenta}" for="maticnibrojklijenta" />
+                    <h:inputText id="maticnibrojklijenta" value="#{klijentController.selected.maticnibrojklijenta}" title="#{bundle.EditKlijentTitle_maticnibrojklijenta}" />
+                    <h:outputLabel value="#{bundle.EditKlijentLabel_brojlicnekarteklijenta}" for="brojlicnekarteklijenta" />
+                    <h:inputText id="brojlicnekarteklijenta" value="#{klijentController.selected.brojlicnekarteklijenta}" title="#{bundle.EditKlijentTitle_brojlicnekarteklijenta}" />
+                    <h:outputLabel value="#{bundle.EditKlijentLabel_idtipaklijenta}" for="idtipaklijenta" />
+                    <h:selectOneMenu id="idtipaklijenta" value="#{klijentController.selected.idtipaklijenta}" title="#{bundle.EditKlijentTitle_idtipaklijenta}" >
+                        <f:selectItems value="#{tipklijentaController.itemsAvailableSelectOne}"/>
+                    </h:selectOneMenu>
+                </h:panelGrid>
+                <h:commandLink styleClass="btn btn-outline-primary" action="#{klijentController.update}" value="#{bundle.EditKlijentSaveLink}"/>
+                <h:link styleClass="btn btn-outline-info" outcome="View" value="#{bundle.EditKlijentViewLink}"/>
+                <h:link styleClass="btn btn-outline-dark" outcome="/index" value="#{bundle.EditKlijentIndexLink}" />
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

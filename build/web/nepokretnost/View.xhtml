@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.ViewNepokretnostTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:panelGroup id="messagePanel" layout="block">
+                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+            </h:panelGroup>
+            <h:form>
+                <h:panelGrid columns="2">
+                    <h:outputText value="#{bundle.ViewNepokretnostLabel_idnepokretnosti}"/>
+                    <h:outputText value="#{nepokretnostController.selected.idnepokretnosti}" title="#{bundle.ViewNepokretnostTitle_idnepokretnosti}"/>
+                    <h:outputText value="#{bundle.ViewNepokretnostLabel_cena}"/>
+                    <h:outputText value="#{nepokretnostController.selected.cena}" title="#{bundle.ViewNepokretnostTitle_cena}"/>
+                    <h:outputText value="#{bundle.ViewNepokretnostLabel_povrsina}"/>
+                    <h:outputText value="#{nepokretnostController.selected.povrsina}" title="#{bundle.ViewNepokretnostTitle_povrsina}"/>
+                    <h:outputText value="#{bundle.ViewNepokretnostLabel_adresa}"/>
+                    <h:outputText value="#{nepokretnostController.selected.adresa}" title="#{bundle.ViewNepokretnostTitle_adresa}"/>
+                    <h:outputText value="#{bundle.ViewNepokretnostLabel_sprat}"/>
+                    <h:outputText value="#{nepokretnostController.selected.sprat}" title="#{bundle.ViewNepokretnostTitle_sprat}"/>
+                    <h:outputText value="#{bundle.ViewNepokretnostLabel_idugovora}"/>
+                    <h:outputText value="#{nepokretnostController.selected.idugovora}" title="#{bundle.ViewNepokretnostTitle_idugovora}"/>
+                    <h:outputText value="#{bundle.ViewNepokretnostLabel_idmesta}"/>
+                    <h:outputText value="#{nepokretnostController.selected.idmesta}" title="#{bundle.ViewNepokretnostTitle_idmesta}"/>
+                    <h:outputText value="#{bundle.ViewNepokretnostLabel_idtipanepokretnosti}"/>
+                    <h:outputText value="#{nepokretnostController.selected.idtipanepokretnosti}" title="#{bundle.ViewNepokretnostTitle_idtipanepokretnosti}"/>
+                </h:panelGrid>
+                <br />
+                <h:commandLink action="#{nepokretnostController.destroyAndView}" value="#{bundle.ViewNepokretnostDestroyLink}"/>
+                <br />
+                <br />
+                <h:link outcome="Edit" value="#{bundle.ViewNepokretnostEditLink}"/>
+                <br />
+                <h:commandLink action="#{nepokretnostController.prepareCreate}" value="#{bundle.ViewNepokretnostCreateLink}" />
+                <br />
+                <h:commandLink action="#{nepokretnostController.prepareList}" value="#{bundle.ViewNepokretnostShowAllLink}"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{bundle.ViewNepokretnostIndexLink}"/>
+
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

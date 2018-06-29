@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.EditTipdodatnogTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:panelGroup id="messagePanel" layout="block">
+                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+            </h:panelGroup>
+            <h:form>
+                <h:panelGrid columns="2">
+                    <h:outputLabel value="#{bundle.EditTipdodatnogLabel_idtipadodatnog}" for="idtipadodatnog" />
+                    <h:inputText id="idtipadodatnog" value="#{tipdodatnogController.selected.idtipadodatnog}" title="#{bundle.EditTipdodatnogTitle_idtipadodatnog}" required="true" requiredMessage="#{bundle.EditTipdodatnogRequiredMessage_idtipadodatnog}"/>
+                    <h:outputLabel value="#{bundle.EditTipdodatnogLabel_opistipadodatnog}" for="opistipadodatnog" />
+                    <h:inputTextarea rows="4" cols="30" id="opistipadodatnog" value="#{tipdodatnogController.selected.opistipadodatnog}" title="#{bundle.EditTipdodatnogTitle_opistipadodatnog}" />
+                </h:panelGrid>
+                <h:commandLink styleClass="btn btn-outline-primary" action="#{tipdodatnogController.update}" value="#{bundle.EditTipdodatnogSaveLink}"/>
+                <h:link styleClass="btn btn-outline-info" outcome="View" value="#{bundle.EditTipdodatnogViewLink}"/>
+                <h:link styleClass="btn btn-outline-dark" outcome="/index" value="#{bundle.EditTipdodatnogIndexLink}" />
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

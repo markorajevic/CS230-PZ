@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.ViewKlijentTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:panelGroup id="messagePanel" layout="block">
+                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+            </h:panelGroup>
+            <h:form>
+                <h:panelGrid columns="2">
+                    <h:outputText value="#{bundle.ViewKlijentLabel_idklijenta}"/>
+                    <h:outputText value="#{klijentController.selected.idklijenta}" title="#{bundle.ViewKlijentTitle_idklijenta}"/>
+                    <h:outputText value="#{bundle.ViewKlijentLabel_imeklijenta}"/>
+                    <h:outputText value="#{klijentController.selected.imeklijenta}" title="#{bundle.ViewKlijentTitle_imeklijenta}"/>
+                    <h:outputText value="#{bundle.ViewKlijentLabel_prezimeklijenta}"/>
+                    <h:outputText value="#{klijentController.selected.prezimeklijenta}" title="#{bundle.ViewKlijentTitle_prezimeklijenta}"/>
+                    <h:outputText value="#{bundle.ViewKlijentLabel_adresaklijenta}"/>
+                    <h:outputText value="#{klijentController.selected.adresaklijenta}" title="#{bundle.ViewKlijentTitle_adresaklijenta}"/>
+                    <h:outputText value="#{bundle.ViewKlijentLabel_telefonklijenta}"/>
+                    <h:outputText value="#{klijentController.selected.telefonklijenta}" title="#{bundle.ViewKlijentTitle_telefonklijenta}"/>
+                    <h:outputText value="#{bundle.ViewKlijentLabel_maticnibrojklijenta}"/>
+                    <h:outputText value="#{klijentController.selected.maticnibrojklijenta}" title="#{bundle.ViewKlijentTitle_maticnibrojklijenta}"/>
+                    <h:outputText value="#{bundle.ViewKlijentLabel_brojlicnekarteklijenta}"/>
+                    <h:outputText value="#{klijentController.selected.brojlicnekarteklijenta}" title="#{bundle.ViewKlijentTitle_brojlicnekarteklijenta}"/>
+                    <h:outputText value="#{bundle.ViewKlijentLabel_idtipaklijenta}"/>
+                    <h:outputText value="#{klijentController.selected.idtipaklijenta}" title="#{bundle.ViewKlijentTitle_idtipaklijenta}"/>
+                </h:panelGrid>
+                <br />
+                <h:commandLink action="#{klijentController.destroyAndView}" value="#{bundle.ViewKlijentDestroyLink}"/>
+                <br />
+                <br />
+                <h:link outcome="Edit" value="#{bundle.ViewKlijentEditLink}"/>
+                <br />
+                <h:commandLink action="#{klijentController.prepareCreate}" value="#{bundle.ViewKlijentCreateLink}" />
+                <br />
+                <h:commandLink action="#{klijentController.prepareList}" value="#{bundle.ViewKlijentShowAllLink}"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{bundle.ViewKlijentIndexLink}"/>
+
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

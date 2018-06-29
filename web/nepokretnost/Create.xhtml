@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.CreateNepokretnostTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:panelGroup id="messagePanel" layout="block">
+                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+            </h:panelGroup>
+            <h:form>
+                <h:panelGrid columns="2">
+                    <h:outputLabel value="#{bundle.CreateNepokretnostLabel_idnepokretnosti}" for="idnepokretnosti" />
+                    <h:inputText id="idnepokretnosti" value="#{nepokretnostController.selected.idnepokretnosti}" title="#{bundle.CreateNepokretnostTitle_idnepokretnosti}" required="true" requiredMessage="#{bundle.CreateNepokretnostRequiredMessage_idnepokretnosti}"/>
+                    <h:outputLabel value="#{bundle.CreateNepokretnostLabel_cena}" for="cena" />
+                    <h:inputText id="cena" value="#{nepokretnostController.selected.cena}" title="#{bundle.CreateNepokretnostTitle_cena}" />
+                    <h:outputLabel value="#{bundle.CreateNepokretnostLabel_povrsina}" for="povrsina" />
+                    <h:inputText id="povrsina" value="#{nepokretnostController.selected.povrsina}" title="#{bundle.CreateNepokretnostTitle_povrsina}" />
+                    <h:outputLabel value="#{bundle.CreateNepokretnostLabel_adresa}" for="adresa" />
+                    <h:inputTextarea rows="4" cols="30" id="adresa" value="#{nepokretnostController.selected.adresa}" title="#{bundle.CreateNepokretnostTitle_adresa}" />
+                    <h:outputLabel value="#{bundle.CreateNepokretnostLabel_sprat}" for="sprat" />
+                    <h:inputText id="sprat" value="#{nepokretnostController.selected.sprat}" title="#{bundle.CreateNepokretnostTitle_sprat}" />
+                    <h:outputLabel value="#{bundle.CreateNepokretnostLabel_idugovora}" for="idugovora" />
+                    <h:selectOneMenu id="idugovora" value="#{nepokretnostController.selected.idugovora}" title="#{bundle.CreateNepokretnostTitle_idugovora}" >
+                        <f:selectItems value="#{ugovorController.itemsAvailableSelectOne}"/>
+                    </h:selectOneMenu>
+                    <h:outputLabel value="#{bundle.CreateNepokretnostLabel_idmesta}" for="idmesta" />
+                    <h:selectOneMenu id="idmesta" value="#{nepokretnostController.selected.idmesta}" title="#{bundle.CreateNepokretnostTitle_idmesta}" >
+                        <f:selectItems value="#{mestoController.itemsAvailableSelectOne}"/>
+                    </h:selectOneMenu>
+                    <h:outputLabel value="#{bundle.CreateNepokretnostLabel_idtipanepokretnosti}" for="idtipanepokretnosti" />
+                    <h:selectOneMenu id="idtipanepokretnosti" value="#{nepokretnostController.selected.idtipanepokretnosti}" title="#{bundle.CreateNepokretnostTitle_idtipanepokretnosti}" >
+                        <f:selectItems value="#{tipnepokretnostiController.itemsAvailableSelectOne}"/>
+                    </h:selectOneMenu>
+                </h:panelGrid>
+                <br />
+                <h:commandLink action="#{nepokretnostController.create}" value="#{bundle.CreateNepokretnostSaveLink}" />
+                <br />
+                <br />
+                <h:commandLink action="#{nepokretnostController.prepareList}" value="#{bundle.CreateNepokretnostShowAllLink}" immediate="true"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{bundle.CreateNepokretnostIndexLink}"/>
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

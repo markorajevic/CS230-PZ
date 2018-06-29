@@ -1,0 +1,60 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html">
+    <h:head>
+        <title>CS230 - Projekat</title>
+        <meta charset="UTF-8"></meta>
+        <h:outputStylesheet name="css/jsfcrud.css"/>
+        <h:outputStylesheet name="css/bootstrap.css"/>
+        <script src="https://code.jquery.com/jquery-3.3.1.js"></script>
+        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.bundle.min.js" integrity="sha384-u/bQvRA/1bobcXlcEYpsEdFVK/vJs3+T+nXLsBYJthmdBuavHvAW6UsmqO2Gd/F9" crossorigin="anonymous"></script>
+        <h:outputScript library="js" name="custom.js"/>
+        <!-- <h:outputScript library="js" name="js/common.js" /> -->
+    </h:head>
+    <h:body>
+        <div class="login-page" align="center">
+
+            <div class="form">
+                <h:form id="registration" class="login-form">
+                    <div class="row centered-form">
+
+                        <div class="col-md-11">
+                                <div class="panel-heading">
+                                    <h3 class="panel-title">Ulogujte se</h3>
+                                </div>
+                                <div class="panel-body">
+                                    <div class="row">
+                                        <div class="col-md-12">
+                                            <div class="form-group">
+                                                <h:inputText class="form-control input-sm" id="userUsername" placeholder="Username" value="#{login.userUsername}" required="true" requiredMessage="#{bundle.CreateUserRequiredMessage_userUsername}"/>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-md-12">
+                                            <div class="form-group">
+                                                <h:inputSecret class="form-control input-sm" id="userPassword" placeholder="Password" value="#{login.userPassword}" required="true" requiredMessage="#{bundle.CreateUsersRequiredMessage_password}"/>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                            <div class="form-group">
+                                                <h:commandButton action="#{login.login}" class="btn-danger" value="#{bundle.Login}" />
+                                            </div>
+
+                                </div>
+                            <p> Nemate nalog </p>
+                             <a class="nav-link" href="CS230-Projekat/faces/user/Create.xhtml">Registruj se </a>
+                        </div>
+                    </div>
+                </h:form>
+            </div><!-- /.col-lg-8 -->
+        </div><!-- /.row -->
+        <script>
+            $(function () {
+                $('input').floatlabel({labelEndTop: 0});
+            });
+        </script>
+    </h:body>
+</html>

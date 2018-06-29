@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.ListNepokretnostTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:form styleClass="jsfcrud_list_form">
+                <h:panelGroup id="messagePanel" layout="block">
+                    <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+                </h:panelGroup>
+                <h:outputText escape="false" value="#{bundle.ListNepokretnostEmpty}" rendered="#{nepokretnostController.items.rowCount == 0}"/>
+                <h:panelGroup rendered="#{nepokretnostController.items.rowCount > 0}">
+                    <h:outputText value="#{nepokretnostController.pagination.pageFirstItem + 1}..#{nepokretnostController.pagination.pageLastItem + 1}/#{nepokretnostController.pagination.itemsCount}"/>&nbsp;
+                    <h:commandLink action="#{nepokretnostController.previous}" value="#{bundle.Previous} #{nepokretnostController.pagination.pageSize}" rendered="#{nepokretnostController.pagination.hasPreviousPage}"/>&nbsp;
+                    <h:commandLink action="#{nepokretnostController.next}" value="#{bundle.Next} #{nepokretnostController.pagination.pageSize}" rendered="#{nepokretnostController.pagination.hasNextPage}"/>&nbsp;
+                    <h:dataTable styleClass="table" value="#{nepokretnostController.items}" var="item" border="0" cellpadding="2" cellspacing="0" rowClasses="jsfcrud_odd_row,jsfcrud_even_row" rules="all" style="border:solid 1px">
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListNepokretnostTitle_idnepokretnosti}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.idnepokretnosti}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListNepokretnostTitle_cena}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.cena}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListNepokretnostTitle_povrsina}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.povrsina}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListNepokretnostTitle_adresa}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.adresa}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListNepokretnostTitle_sprat}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.sprat}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListNepokretnostTitle_idugovora}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.idugovora}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListNepokretnostTitle_idmesta}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.idmesta}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListNepokretnostTitle_idtipanepokretnosti}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.idtipanepokretnosti}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="&nbsp;"/>
+                            </f:facet>
+                            <h:commandLink action="#{nepokretnostController.prepareView}" value="#{bundle.ListNepokretnostViewLink}"/>
+                            <h:outputText value=" "/>
+                            <h:commandLink action="#{nepokretnostController.prepareEdit}" value="#{bundle.ListNepokretnostEditLink}"/>
+                            <h:outputText value=" "/>
+                            <h:commandLink action="#{nepokretnostController.destroy}" value="#{bundle.ListNepokretnostDestroyLink}"/>
+                        </h:column>
+                    </h:dataTable>
+                </h:panelGroup>
+                <br />
+                <h:commandLink action="#{nepokretnostController.prepareCreate}" value="#{bundle.ListNepokretnostCreateLink}"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{bundle.ListNepokretnostIndexLink}"/>
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

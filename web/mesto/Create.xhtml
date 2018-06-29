@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.CreateMestoTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:panelGroup id="messagePanel" layout="block">
+                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+            </h:panelGroup>
+            <h:form>
+                <h:panelGrid columns="2">
+                    <h:outputLabel value="#{bundle.CreateMestoLabel_idmesta}" for="idmesta" />
+                    <h:inputText id="idmesta" value="#{mestoController.selected.idmesta}" title="#{bundle.CreateMestoTitle_idmesta}" required="true" requiredMessage="#{bundle.CreateMestoRequiredMessage_idmesta}"/>
+                    <h:outputLabel value="#{bundle.CreateMestoLabel_nazivmesta}" for="nazivmesta" />
+                    <h:inputTextarea rows="4" cols="30" id="nazivmesta" value="#{mestoController.selected.nazivmesta}" title="#{bundle.CreateMestoTitle_nazivmesta}" />
+                    <h:outputLabel value="#{bundle.CreateMestoLabel_iddrzave}" for="iddrzave" />
+                    <h:selectOneMenu id="iddrzave" value="#{mestoController.selected.iddrzave}" title="#{bundle.CreateMestoTitle_iddrzave}" >
+                        <f:selectItems value="#{drzavaController.itemsAvailableSelectOne}"/>
+                    </h:selectOneMenu>
+                </h:panelGrid>
+                <br />
+                <h:commandLink action="#{mestoController.create}" value="#{bundle.CreateMestoSaveLink}" />
+                <br />
+                <br />
+                <h:commandLink action="#{mestoController.prepareList}" value="#{bundle.CreateMestoShowAllLink}" immediate="true"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{bundle.CreateMestoIndexLink}"/>
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

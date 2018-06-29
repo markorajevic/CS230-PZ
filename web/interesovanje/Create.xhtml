@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.CreateInteresovanjeTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:panelGroup id="messagePanel" layout="block">
+                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+            </h:panelGroup>
+            <h:form>
+                <h:panelGrid columns="2">
+                    <h:outputLabel value="#{bundle.CreateInteresovanjeLabel_idinteresovanja}" for="idinteresovanja" />
+                    <h:inputText id="idinteresovanja" value="#{interesovanjeController.selected.idinteresovanja}" title="#{bundle.CreateInteresovanjeTitle_idinteresovanja}" required="true" requiredMessage="#{bundle.CreateInteresovanjeRequiredMessage_idinteresovanja}"/>
+                    <h:outputLabel value="#{bundle.CreateInteresovanjeLabel_idnepokretnosti}" for="idnepokretnosti" />
+                    <h:selectOneMenu id="idnepokretnosti" value="#{interesovanjeController.selected.idnepokretnosti}" title="#{bundle.CreateInteresovanjeTitle_idnepokretnosti}" >
+                        <f:selectItems value="#{nepokretnostController.itemsAvailableSelectOne}"/>
+                    </h:selectOneMenu>
+                    <h:outputLabel value="#{bundle.CreateInteresovanjeLabel_idklijenta}" for="idklijenta" />
+                    <h:selectOneMenu id="idklijenta" value="#{interesovanjeController.selected.idklijenta}" title="#{bundle.CreateInteresovanjeTitle_idklijenta}" >
+                        <f:selectItems value="#{klijentController.itemsAvailableSelectOne}"/>
+                    </h:selectOneMenu>
+                </h:panelGrid>
+                <br />
+                <h:commandLink class="btn btn-outline-success btn-sm" action="#{interesovanjeController.create}" value="#{bundle.CreateInteresovanjeSaveLink}" />
+                <br />
+                <br />
+                <h:commandLink class="btn btn-outline-info btn-sm" action="#{interesovanjeController.prepareList}" value="#{bundle.CreateInteresovanjeShowAllLink}" immediate="true"/>
+                <br />
+                <br />
+                <h:link class="btn btn-outline-primary btn-sm" outcome="/index" value="#{bundle.CreateInteresovanjeIndexLink}"/>
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

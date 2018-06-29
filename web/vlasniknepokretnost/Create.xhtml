@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.CreateVlasniknepokretnostTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:panelGroup id="messagePanel" layout="block">
+                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+            </h:panelGroup>
+            <h:form>
+                <h:panelGrid columns="2">
+                    <h:outputLabel value="#{bundle.CreateVlasniknepokretnostLabel_idvlasniknepokretnost}" for="idvlasniknepokretnost" />
+                    <h:inputText id="idvlasniknepokretnost" value="#{vlasniknepokretnostController.selected.idvlasniknepokretnost}" title="#{bundle.CreateVlasniknepokretnostTitle_idvlasniknepokretnost}" required="true" requiredMessage="#{bundle.CreateVlasniknepokretnostRequiredMessage_idvlasniknepokretnost}"/>
+                    <h:outputLabel value="#{bundle.CreateVlasniknepokretnostLabel_idnepokretnosti}" for="idnepokretnosti" />
+                    <h:selectOneMenu id="idnepokretnosti" value="#{vlasniknepokretnostController.selected.idnepokretnosti}" title="#{bundle.CreateVlasniknepokretnostTitle_idnepokretnosti}" >
+                        <f:selectItems value="#{nepokretnostController.itemsAvailableSelectOne}"/>
+                    </h:selectOneMenu>
+                    <h:outputLabel value="#{bundle.CreateVlasniknepokretnostLabel_idklijenta}" for="idklijenta" />
+                    <h:selectOneMenu id="idklijenta" value="#{vlasniknepokretnostController.selected.idklijenta}" title="#{bundle.CreateVlasniknepokretnostTitle_idklijenta}" >
+                        <f:selectItems value="#{klijentController.itemsAvailableSelectOne}"/>
+                    </h:selectOneMenu>
+                </h:panelGrid>
+                <br />
+                <h:commandLink action="#{vlasniknepokretnostController.create}" value="#{bundle.CreateVlasniknepokretnostSaveLink}" />
+                <br />
+                <br />
+                <h:commandLink action="#{vlasniknepokretnostController.prepareList}" value="#{bundle.CreateVlasniknepokretnostShowAllLink}" immediate="true"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{bundle.CreateVlasniknepokretnostIndexLink}"/>
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.ViewMestoTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:panelGroup id="messagePanel" layout="block">
+                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+            </h:panelGroup>
+            <h:form>
+                <h:panelGrid columns="2">
+                    <h:outputText value="#{bundle.ViewMestoLabel_idmesta}"/>
+                    <h:outputText value="#{mestoController.selected.idmesta}" title="#{bundle.ViewMestoTitle_idmesta}"/>
+                    <h:outputText value="#{bundle.ViewMestoLabel_nazivmesta}"/>
+                    <h:outputText value="#{mestoController.selected.nazivmesta}" title="#{bundle.ViewMestoTitle_nazivmesta}"/>
+                    <h:outputText value="#{bundle.ViewMestoLabel_iddrzave}"/>
+                    <h:outputText value="#{mestoController.selected.iddrzave}" title="#{bundle.ViewMestoTitle_iddrzave}"/>
+                </h:panelGrid>
+                <br />
+                <h:commandLink action="#{mestoController.destroyAndView}" value="#{bundle.ViewMestoDestroyLink}"/>
+                <br />
+                <br />
+                <h:link outcome="Edit" value="#{bundle.ViewMestoEditLink}"/>
+                <br />
+                <h:commandLink action="#{mestoController.prepareCreate}" value="#{bundle.ViewMestoCreateLink}" />
+                <br />
+                <h:commandLink action="#{mestoController.prepareList}" value="#{bundle.ViewMestoShowAllLink}"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{bundle.ViewMestoIndexLink}"/>
+
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

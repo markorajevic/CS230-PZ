@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.ViewVlasniknepokretnostTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:panelGroup id="messagePanel" layout="block">
+                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+            </h:panelGroup>
+            <h:form>
+                <h:panelGrid columns="2">
+                    <h:outputText value="#{bundle.ViewVlasniknepokretnostLabel_idvlasniknepokretnost}"/>
+                    <h:outputText value="#{vlasniknepokretnostController.selected.idvlasniknepokretnost}" title="#{bundle.ViewVlasniknepokretnostTitle_idvlasniknepokretnost}"/>
+                    <h:outputText value="#{bundle.ViewVlasniknepokretnostLabel_idnepokretnosti}"/>
+                    <h:outputText value="#{vlasniknepokretnostController.selected.idnepokretnosti}" title="#{bundle.ViewVlasniknepokretnostTitle_idnepokretnosti}"/>
+                    <h:outputText value="#{bundle.ViewVlasniknepokretnostLabel_idklijenta}"/>
+                    <h:outputText value="#{vlasniknepokretnostController.selected.idklijenta}" title="#{bundle.ViewVlasniknepokretnostTitle_idklijenta}"/>
+                </h:panelGrid>
+                <br />
+                <h:commandLink action="#{vlasniknepokretnostController.destroyAndView}" value="#{bundle.ViewVlasniknepokretnostDestroyLink}"/>
+                <br />
+                <br />
+                <h:link outcome="Edit" value="#{bundle.ViewVlasniknepokretnostEditLink}"/>
+                <br />
+                <h:commandLink action="#{vlasniknepokretnostController.prepareCreate}" value="#{bundle.ViewVlasniknepokretnostCreateLink}" />
+                <br />
+                <h:commandLink action="#{vlasniknepokretnostController.prepareList}" value="#{bundle.ViewVlasniknepokretnostShowAllLink}"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{bundle.ViewVlasniknepokretnostIndexLink}"/>
+
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

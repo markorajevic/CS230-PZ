@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.EditMestoTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:panelGroup id="messagePanel" layout="block">
+                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+            </h:panelGroup>
+            <h:form>
+                <h:panelGrid columns="2">
+                    <h:outputLabel value="#{bundle.EditMestoLabel_idmesta}" for="idmesta" />
+                    <h:inputText id="idmesta" value="#{mestoController.selected.idmesta}" title="#{bundle.EditMestoTitle_idmesta}" required="true" requiredMessage="#{bundle.EditMestoRequiredMessage_idmesta}"/>
+                    <h:outputLabel value="#{bundle.EditMestoLabel_nazivmesta}" for="nazivmesta" />
+                    <h:inputTextarea rows="4" cols="30" id="nazivmesta" value="#{mestoController.selected.nazivmesta}" title="#{bundle.EditMestoTitle_nazivmesta}" />
+                    <h:outputLabel value="#{bundle.EditMestoLabel_iddrzave}" for="iddrzave" />
+                    <h:selectOneMenu id="iddrzave" value="#{mestoController.selected.iddrzave}" title="#{bundle.EditMestoTitle_iddrzave}" >
+                        <f:selectItems value="#{drzavaController.itemsAvailableSelectOne}"/>
+                    </h:selectOneMenu>
+                </h:panelGrid>
+                <h:commandLink styleClass="btn btn-outline-primary" action="#{mestoController.update}" value="#{bundle.EditMestoSaveLink}"/>
+                <h:link styleClass="btn btn-outline-info" outcome="View" value="#{bundle.EditMestoViewLink}"/>
+                <h:link styleClass="btn btn-outline-dark" outcome="/index" value="#{bundle.EditMestoIndexLink}" />
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

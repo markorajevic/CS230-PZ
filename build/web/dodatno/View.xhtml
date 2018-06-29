@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.ViewDodatnoTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:panelGroup id="messagePanel" layout="block">
+                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+            </h:panelGroup>
+            <h:form>
+                <h:panelGrid columns="2">
+                    <h:outputText value="#{bundle.ViewDodatnoLabel_iddodatno}"/>
+                    <h:outputText value="#{dodatnoController.selected.iddodatno}" title="#{bundle.ViewDodatnoTitle_iddodatno}"/>
+                    <h:outputText value="#{bundle.ViewDodatnoLabel_idnepokretnosti}"/>
+                    <h:outputText value="#{dodatnoController.selected.idnepokretnosti}" title="#{bundle.ViewDodatnoTitle_idnepokretnosti}"/>
+                    <h:outputText value="#{bundle.ViewDodatnoLabel_idtipadodatnog}"/>
+                    <h:outputText value="#{dodatnoController.selected.idtipadodatnog}" title="#{bundle.ViewDodatnoTitle_idtipadodatnog}"/>
+                </h:panelGrid>
+                <br />
+                <h:commandLink action="#{dodatnoController.destroyAndView}" value="#{bundle.ViewDodatnoDestroyLink}"/>
+                <br />
+                <br />
+                <h:link outcome="Edit" value="#{bundle.ViewDodatnoEditLink}"/>
+                <br />
+                <h:commandLink action="#{dodatnoController.prepareCreate}" value="#{bundle.ViewDodatnoCreateLink}" />
+                <br />
+                <h:commandLink action="#{dodatnoController.prepareList}" value="#{bundle.ViewDodatnoShowAllLink}"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{bundle.ViewDodatnoIndexLink}"/>
+
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.ListKlijentTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:form styleClass="jsfcrud_list_form">
+                <h:panelGroup id="messagePanel" layout="block">
+                    <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+                </h:panelGroup>
+                <h:outputText escape="false" value="#{bundle.ListKlijentEmpty}" rendered="#{klijentController.items.rowCount == 0}"/>
+                <h:panelGroup rendered="#{klijentController.items.rowCount > 0}">
+                    <h:outputText value="#{klijentController.pagination.pageFirstItem + 1}..#{klijentController.pagination.pageLastItem + 1}/#{klijentController.pagination.itemsCount}"/>&nbsp;
+                    <h:commandLink action="#{klijentController.previous}" value="#{bundle.Previous} #{klijentController.pagination.pageSize}" rendered="#{klijentController.pagination.hasPreviousPage}"/>&nbsp;
+                    <h:commandLink action="#{klijentController.next}" value="#{bundle.Next} #{klijentController.pagination.pageSize}" rendered="#{klijentController.pagination.hasNextPage}"/>&nbsp;
+                    <h:dataTable styleClass="table" value="#{klijentController.items}" var="item" border="0" cellpadding="2" cellspacing="0" rowClasses="jsfcrud_odd_row,jsfcrud_even_row" rules="all" style="border:solid 1px">
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListKlijentTitle_idklijenta}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.idklijenta}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListKlijentTitle_imeklijenta}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.imeklijenta}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListKlijentTitle_prezimeklijenta}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.prezimeklijenta}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListKlijentTitle_adresaklijenta}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.adresaklijenta}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListKlijentTitle_telefonklijenta}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.telefonklijenta}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListKlijentTitle_maticnibrojklijenta}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.maticnibrojklijenta}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListKlijentTitle_brojlicnekarteklijenta}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.brojlicnekarteklijenta}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListKlijentTitle_idtipaklijenta}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.idtipaklijenta}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="&nbsp;"/>
+                            </f:facet>
+                            <h:commandLink action="#{klijentController.prepareView}" value="#{bundle.ListKlijentViewLink}"/>
+                            <h:outputText value=" "/>
+                            <h:commandLink action="#{klijentController.prepareEdit}" value="#{bundle.ListKlijentEditLink}"/>
+                            <h:outputText value=" "/>
+                            <h:commandLink action="#{klijentController.destroy}" value="#{bundle.ListKlijentDestroyLink}"/>
+                        </h:column>
+                    </h:dataTable>
+                </h:panelGroup>
+                <br />
+                <h:commandLink action="#{klijentController.prepareCreate}" value="#{bundle.ListKlijentCreateLink}"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{bundle.ListKlijentIndexLink}"/>
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.CreateUgovorTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:panelGroup id="messagePanel" layout="block">
+                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+            </h:panelGroup>
+            <h:form>
+                <h:panelGrid columns="2">
+                    <h:outputLabel value="#{bundle.CreateUgovorLabel_idugovora}" for="idugovora" />
+                    <h:inputText id="idugovora" value="#{ugovorController.selected.idugovora}" title="#{bundle.CreateUgovorTitle_idugovora}" required="true" requiredMessage="#{bundle.CreateUgovorRequiredMessage_idugovora}"/>
+                    <h:outputLabel value="#{bundle.CreateUgovorLabel_datumnastanka}" for="datumnastanka" />
+                    <h:inputText id="datumnastanka" value="#{ugovorController.selected.datumnastanka}" title="#{bundle.CreateUgovorTitle_datumnastanka}" >
+                        <f:convertDateTime pattern="MM/dd/yyyy" />
+                    </h:inputText>
+                    <h:outputLabel value="#{bundle.CreateUgovorLabel_datumisticanja}" for="datumisticanja" />
+                    <h:inputText id="datumisticanja" value="#{ugovorController.selected.datumisticanja}" title="#{bundle.CreateUgovorTitle_datumisticanja}" >
+                        <f:convertDateTime pattern="MM/dd/yyyy" />
+                    </h:inputText>
+                    <h:outputLabel value="#{bundle.CreateUgovorLabel_iznos}" for="iznos" />
+                    <h:inputText id="iznos" value="#{ugovorController.selected.iznos}" title="#{bundle.CreateUgovorTitle_iznos}" />
+                    <h:outputLabel value="#{bundle.CreateUgovorLabel_iznosnaknade}" for="iznosnaknade" />
+                    <h:inputText id="iznosnaknade" value="#{ugovorController.selected.iznosnaknade}" title="#{bundle.CreateUgovorTitle_iznosnaknade}" />
+                    <h:outputLabel value="#{bundle.CreateUgovorLabel_napomena}" for="napomena" />
+                    <h:inputTextarea rows="4" cols="30" id="napomena" value="#{ugovorController.selected.napomena}" title="#{bundle.CreateUgovorTitle_napomena}" />
+                    <h:outputLabel value="#{bundle.CreateUgovorLabel_idtipaugovora}" for="idtipaugovora" />
+                    <h:selectOneMenu id="idtipaugovora" value="#{ugovorController.selected.idtipaugovora}" title="#{bundle.CreateUgovorTitle_idtipaugovora}" >
+                        <f:selectItems value="#{tipugovoraController.itemsAvailableSelectOne}"/>
+                    </h:selectOneMenu>
+                    <h:outputLabel value="#{bundle.CreateUgovorLabel_idtipanaknade}" for="idtipanaknade" />
+                    <h:selectOneMenu id="idtipanaknade" value="#{ugovorController.selected.idtipanaknade}" title="#{bundle.CreateUgovorTitle_idtipanaknade}" >
+                        <f:selectItems value="#{tipnaknadeController.itemsAvailableSelectOne}"/>
+                    </h:selectOneMenu>
+                </h:panelGrid>
+                <br />
+                <h:commandLink action="#{ugovorController.create}" value="#{bundle.CreateUgovorSaveLink}" />
+                <br />
+                <br />
+                <h:commandLink action="#{ugovorController.prepareList}" value="#{bundle.CreateUgovorShowAllLink}" immediate="true"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{bundle.CreateUgovorIndexLink}"/>
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>
